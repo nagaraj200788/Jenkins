@@ -1,0 +1,13 @@
+Started on Sep 10, 2020 6:38:00 PM
+Using strategy: Default
+[poll] Last Built Revision: Revision 12d272fe9391a532e7ce84a160a1fbf2a43d363d (refs/remotes/origin/master)
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.21.0.windows.1'
+Setting http proxy: www-proxy-idc.in.oracle.com:80
+ > git.exe ls-remote -h -- https://github.com/g0t4/jenkins2-course-spring-petclinic.git # timeout=10
+Found 6 remote heads on https://github.com/g0t4/jenkins2-course-spring-petclinic.git
+[poll] Latest remote head revision on refs/heads/master is: 12d272fe9391a532e7ce84a160a1fbf2a43d363d - already built by 1
+Done. Took 2.2 sec
+No changes

@@ -1,0 +1,39 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.40">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.83">
+    <script>node(&apos;master&apos;) {
+
+	stage(&apos;pullgitCode&apos;) 
+	{
+	git credentialsId: &apos;3473fe8d-ba9c-4ec9-a738-2c896769078f&apos;, url: &apos;https://github.com/nagaraj200788/helloworldspringboot.git&apos;
+	}
+        def project_path=&quot;helloworldspringboot&quot;
+		dir(project_path) 
+		{
+			stage(&apos;mvnpackage&apos;) 
+			{
+			bat label: &apos;&apos;, script: &apos;mvn -f pom.xml clean package&apos;
+			}
+		}    
+}
+
+node(&apos;node_second&apos;) {
+ def project_path=&quot;helloworldspringboot&quot;
+		dir(project_path) 
+		{
+			stage(&apos;archiveArtifacts&apos;) 
+				{
+				archiveArtifacts artifacts: &apos;target/*.jar&apos;, followSymlinks: false, onlyIfSuccessful: true
+				}
+		}
+}
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
